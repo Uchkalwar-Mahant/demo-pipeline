@@ -46,12 +46,12 @@ jobs:
       run: npm test -- --coverage
     - name: Deploy
       run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
+          git config --global user.name $Uchkalwar-Mahant
+          git config --global user.email $mahant@krishtechnolabs.com
           git remote set-url origin https://${github_token}@github.com/${repository}
           npm run deploy
       env:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         github_token: ${{ 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 }}
-        repository: ${{ github.repository }}
+        repository: ${{ demo-pipeline }}
