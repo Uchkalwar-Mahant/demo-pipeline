@@ -35,14 +35,4 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy
-        run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
-          git remote set-url origin https://secrets.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@github.com/Uchkalwar-Mahant/demo-pipeline.git
-          npm run deploy
-        env:
-          user_name: "Uchkalwar-Mahant"
-          user_email: "mahant@krishtechnolabs.com"
-          github_token: ${{ secrets.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 }}
-          repository: ${{ github.repository }}
+      
