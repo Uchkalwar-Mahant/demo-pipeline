@@ -2,13 +2,12 @@ name: CI/CD
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,34 +15,34 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run the tests and generate coverage report
-      run: npm test -- --coverage
+      - name: Run the tests and generate coverage report
+        run: npm test -- --coverage
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
 
-    - name: Build
-      run: npm run build
+      - name: Build
+        run: npm run build
 
-    - name: Deploy
-      run: |
-        git config --global user.name $user_name
-        git config --global user.email $user_email
-        git remote set-url origin https://${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}@github.com/Uchkalwar-Mahant/${demo-pipeline}
-        npm run deploy
-      env:
-        user_name: 'Uchkalwar-Mahant'
-        user_email: 'mahant@krishtechnolabs.com'
-        github_token: ${{ secrets.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 }}
-        repository: ${{ github.repository }}
+      - name: Deploy
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://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@github.com/Uchkalwar-Mahant/demo-pipeline.git
+          npm run deploy
+        env:
+          user_name: "Uchkalwar-Mahant"
+          user_email: "mahant@krishtechnolabs.com"
+          github_token: ${{ secrets.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 }}
+          repository: ${{ github.repository }}
