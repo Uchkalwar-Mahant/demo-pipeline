@@ -34,4 +34,5 @@ jobs:
 
     - name: Build
       run: npm run build
-
+    - name: Run the tests and generate coverage report
+      run: npm test -- --coverage
