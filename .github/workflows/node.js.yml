@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --global user.name $user_name
           git config --global user.email $user_email
-          git remote set-url origin https://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@github.com/Uchkalwar-Mahant/demo-pipeline.git
+          git remote set-url origin https://secrets.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@github.com/Uchkalwar-Mahant/demo-pipeline.git
           npm run deploy
         env:
           user_name: "Uchkalwar-Mahant"
